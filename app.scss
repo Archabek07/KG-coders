@@ -15,6 +15,10 @@ $background: linear-gradient(
   margin: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -92,7 +96,7 @@ body {
     &::after {
       position: absolute;
       content: "";
-      background-image: url("../img/Btn1.svg");
+      background-image: url("../img/btn1black.svg");
       background-repeat: no-repeat;
       background-position: center center;
       z-index: 200;
@@ -100,25 +104,67 @@ body {
       height: 50px;
       right: 20px;
       top: 18px;
+      transition: all 0.3s ease;
     }
-  }
-  .btn--gray {
-    position: relative;
-    color: $main-font-color;
-    background: linear-gradient(94.21deg, #363535 3.63%, #323232 102.06%);
-    border-radius: 0px 38px 38px 38px;
-    &::after {
+    &::before {
       position: absolute;
       content: "";
-      background-image: url("../img/Btn2.svg");
+      background-image: url("../img/Btn1.svg");
       background-repeat: no-repeat;
       background-position: center center;
-      z-index: 200;
+      z-index: 300;
       width: 50px;
-      height: 54px;
+      height: 50px;
       right: 20px;
       top: 18px;
+      transform: scale(0);
+      transition: all 0.3s ease;
     }
+    &:hover::after {
+      transform: scale(0);
+    }
+    &:hover::before {
+      transform: scale(1);
+    }
+  }
+}
+.btn--gray {
+  position: relative;
+  color: $main-font-color;
+  background: linear-gradient(94.21deg, #363535 3.63%, #323232 102.06%);
+  border-radius: 0px 38px 38px 38px;
+  &::after {
+    position: absolute;
+    content: "";
+    background-image: url("../img/btn2green.svg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    z-index: 200;
+    width: 50px;
+    height: 54px;
+    right: 20px;
+    top: 18px;
+    transition: all 0.3s ease;
+  }
+  &::before {
+    position: absolute;
+    content: "";
+    background-image: url("../img/btn2.svg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    z-index: 300;
+    width: 50px;
+    height: 54px;
+    right: 20px;
+    top: 18px;
+    transform: scale(0);
+    transition: all 0.3s ease;
+  }
+  &:hover::after {
+    transform: scale(0);
+  }
+  &:hover::before {
+    transform: scale(1);
   }
 }
 
@@ -182,11 +228,14 @@ body {
   }
 
   &__header-watch-btn {
+    background-color: transparent;
+    cursor: pointer;
     min-width: 200px;
     margin-left: 5px;
     margin-top: 50px;
     display: flex;
     align-items: center;
+    border: none;
     text-decoration: none;
     & img {
       position: relative;
@@ -200,13 +249,16 @@ body {
 
   &__header-watch-btn-text {
     margin-left: 15px;
-    p {
+    font-family: $main-font;
+
+    & span:nth-child(1) {
       font-weight: 500;
       font-size: 20px;
       line-height: 23px;
       color: $main-font-color;
     }
     span {
+      display: block;
       font-weight: 500;
       font-size: 20px;
       line-height: 23px;
@@ -218,10 +270,253 @@ body {
     margin-top: -90px;
     margin-right: -25px;
   }
+
+  .videowrapper {
+    width: 100%;
+    position: relative;
+    height: 0;
+    margin-top: 50px;
+    // padding-top: 25px;
+    padding-bottom: 0;
+    transition: all 0.3s ease-in-out;
+
+    iframe {
+      border-radius: 15px;
+      border: none;
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      top: 0;
+      height: 100%;
+      width: 100%;
+    }
+  }
+  .btn-active {
+    padding-bottom: 56.25%;
+  }
 }
 
 .about-us {
+  margin-top: 150px;
   .btns &__btn-styles {
     border-radius: 38px;
+  }
+  &__head {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 5px;
+  }
+  &__head-title {
+    font-family: $main-font;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 42px;
+    color: $second-font-color;
+    margin-bottom: 55px;
+  }
+  &__head-text {
+    font-family: $main-font;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 25px;
+    color: $second-font-color;
+    width: 456px;
+    margin-bottom: 40px;
+  }
+}
+
+.members {
+  background-color: #0c0c0c;
+  margin-top: 150px;
+  min-height: 750px;
+  border-radius: 50px;
+
+  .slick-initialized .slick-slide {
+    display: flex;
+  }
+
+  .slick-dots {
+    justify-content: center;
+    display: flex;
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    bottom: -21%;
+    left: 0;
+    right: 0;
+    text-align: center;
+  }
+
+  .slick-dots li:last-child button {
+    margin: 0;
+  }
+
+  .slick-dots button {
+    margin: 0;
+    margin-right: 20px;
+    padding: 0;
+    font-size: 0;
+    width: 30px;
+    height: 30px;
+    border: 4px solid $second-font-color;
+    border-radius: 50%;
+    background-color: transparent;
+    cursor: pointer;
+    transition: all 0.5s ease;
+  }
+
+  .slick-dots .slick-active button {
+    background-color: $second-font-color;
+    border: 4px solid black;
+  }
+
+  .slider {
+    margin-top: 80px;
+    display: flex;
+    align-items: center;
+
+    &-btn {
+      position: absolute;
+      bottom: -30%;
+      transform: translateY(-50%);
+      background-color: transparent;
+      border: none;
+      margin: 0;
+      padding: 0;
+      z-index: 1;
+      cursor: pointer;
+    }
+
+    &-btn-prev {
+      left: 25%;
+    }
+
+    &-btn-next {
+      right: 25%;
+    }
+  }
+
+  &__img {
+    width: 450px;
+    margin-top: 60px;
+    position: relative;
+
+    .loc-txt,
+    .job-txt {
+      position: absolute;
+      pointer-events: none;
+    }
+    .main-img {
+      width: 100%;
+    }
+    .loc-txt {
+      right: -65px;
+      top: 53px;
+    }
+    .job-txt {
+      left: -65px;
+      bottom: 63px;
+    }
+  }
+  &__title {
+    margin: 0;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 42px;
+    color: $second-font-color;
+    padding-top: 45px;
+    padding-left: 60px;
+  }
+  &__blocks {
+    padding-left: 60px;
+    list-style: none;
+  }
+
+  &__members {
+    display: flex;
+    align-items: center;
+  }
+
+  &__member.slick-slide {
+    display: flex;
+  }
+
+  &__members-info {
+    align-self: flex-start;
+    margin-top: 60px;
+    margin-left: 120px;
+    h3 {
+      margin: 0;
+      font-weight: 700;
+      font-size: 36px;
+      line-height: 42px;
+      color: $second-font-color;
+    }
+    q {
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 16px;
+      color: $main-font-color;
+    }
+  }
+  &__members-whyit,
+  &__members-links {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: space-between;
+    width: 450px;
+    height: 127px;
+    background-color: #1f1f1f;
+    border-radius: 12px;
+    padding: 40px 30px;
+
+    h4 {
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 23px;
+      color: $second-font-color;
+    }
+    p {
+      margin-top: 20px;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 19px;
+      color: $main-font-color;
+    }
+    a {
+      font-size: 0;
+      transition: all 0.3s ease-in-out;
+      &:hover {
+        transform: scale(1.1);
+      }
+      &:hover path {
+        fill: $second-font-color;
+      }
+    }
+  }
+  &__members-whyit {
+    margin-top: 30px;
+  }
+  &__members-links {
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+
+    a {
+      display: block;
+    }
+  }
+  &__slider {
+    margin-top: 80px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }
