@@ -28,6 +28,40 @@ body {
   background-size: cover;
 }
 
+.pattern1,
+.pattern2,
+.pattern3,
+.pattern4 {
+  position: absolute;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100vh;
+  z-index: -1000;
+}
+
+.pattern1 {
+  background-image: url("../img/Ellipse_8.png");
+  left: 44%;
+}
+
+.pattern2 {
+  background-image: url("../img/Ellipse_7-2.png");
+  left: -5%;
+}
+
+// .pattern3 {
+//   background-image: url("../img/Ellipse_7.png");
+//   right: 0;
+// }
+
+.pattern4 {
+  background-image: url("../img/Ellipse_7-1.png");
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
 .container {
   max-width: 1170px;
   height: 100%;
@@ -39,6 +73,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
   &__nav {
     display: flex;
   }
@@ -233,34 +268,57 @@ body {
     min-width: 200px;
     margin-left: 5px;
     margin-top: 50px;
+    padding: 0;
+    border-radius: 38px;
     display: flex;
     align-items: center;
     border: none;
+    overflow: hidden;
 
     .yellow-btn {
       display: block;
       // background: linear-gradient(94.21deg, #444444 3.63%, #323232 102.06%);
-      width: 40px;
+      width: 50px;
       border-radius: 50%;
       transform: rotate(0deg);
       transition: all 0.3s ease-out;
+      position: relative;
+      z-index: 200;
     }
 
     .yellow-btn-active {
       transform: rotate(90deg);
     }
+
+    .watch-btn-text-active {
+      margin-left: -27px;
+    }
   }
 
   &__header-watch-btn-text {
-    margin-left: 15px;
+    position: relative;
+    margin-left: -100%;
     font-family: $main-font;
-
-    span {
-      display: block;
-      font-weight: 500;
-      font-size: 20px;
-      line-height: 23px;
-      color: $main-font-color;
+    display: block;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 23px;
+    color: $second-font-color;
+    padding: 10px 15px 10px 40px;
+    background-color: #2a2a2a;
+    border-radius: 38px;
+    z-index: -2;
+    transition: all 0.3s ease-in-out;
+    &::before {
+      position: absolute;
+      content: "";
+      left: -27px;
+      bottom: -9px;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background-color: #1a1a1a;
+      z-index: -1;
     }
   }
   &__member-imgs {
@@ -296,6 +354,7 @@ body {
 }
 
 .about-us {
+  position: relative;
   margin-top: 150px;
   .btns &__btn-styles {
     border-radius: 38px;
@@ -516,5 +575,108 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+}
+
+.footer {
+  position: relative;
+  margin-top: 120px;
+  padding: 25px;
+
+  &__title {
+    color: $second-font-color;
+    font-family: $main-font;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 36px;
+    line-height: 42px;
+  }
+
+  &__inner {
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  // &__block + &__block {
+  //   margin-left: 10px;
+  // }
+
+  &__text {
+    color: $second-font-color;
+    font-family: $main-font;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 25px;
+    padding-bottom: 20px;
+  }
+
+  &__logo-link {
+    width: 340px;
+    height: 190px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.09);
+    border-radius: 11px;
+    img {
+      width: 80%;
+    }
+  }
+
+  &__block-link {
+    display: flex;
+    // flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+    width: 340px;
+    height: 190px;
+    background: rgba(255, 255, 255, 0.09);
+    border-radius: 11px;
+    padding: 10%;
+
+    svg {
+      transition: all 0.5s ease-in-out;
+      // width: 50px;
+      // height: 50px;
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+  }
+
+  &__contacts {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-content: flex-start;
+    width: 340px;
+    height: 190px;
+    background: rgba(255, 255, 255, 0.09);
+    border-radius: 11px;
+    padding: 12%;
+
+    a {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      color: $second-font-color;
+      img {
+        padding-right: 10px;
+      }
+    }
+  }
+
+  &__caption {
+    margin-top: 100px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 17px;
+    color: $main-font-color;
   }
 }
