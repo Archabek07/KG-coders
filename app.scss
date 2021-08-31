@@ -236,14 +236,18 @@ body {
     display: flex;
     align-items: center;
     border: none;
-    text-decoration: none;
-    & img {
-      position: relative;
-      width: 70px;
-      height: 70px;
+
+    .yellow-btn {
       display: block;
-      border-radius: 100px;
-      background: linear-gradient(94.21deg, #444444 3.63%, #323232 102.06%);
+      // background: linear-gradient(94.21deg, #444444 3.63%, #323232 102.06%);
+      width: 40px;
+      border-radius: 50%;
+      transform: rotate(0deg);
+      transition: all 0.3s ease-out;
+    }
+
+    .yellow-btn-active {
+      transform: rotate(90deg);
     }
   }
 
@@ -251,18 +255,12 @@ body {
     margin-left: 15px;
     font-family: $main-font;
 
-    & span:nth-child(1) {
-      font-weight: 500;
-      font-size: 20px;
-      line-height: 23px;
-      color: $main-font-color;
-    }
     span {
       display: block;
       font-weight: 500;
       font-size: 20px;
       line-height: 23px;
-      color: $second-font-color;
+      color: $main-font-color;
     }
   }
   &__member-imgs {

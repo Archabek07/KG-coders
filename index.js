@@ -10,7 +10,10 @@ $(document).ready(function () {
 
 const videoBtn = document.querySelector(".videowrapper");
 const activeBtn = document.querySelector(".main__header-watch-btn");
+const yellowBtn = document.querySelector(".yellow-btn");
 
 activeBtn.addEventListener("click", () => {
   videoBtn.classList.toggle("btn-active");
+  videoBtn.getElementsByTagName("span").style.color = "#ffffff";
+  yellowBtn.classList.toggle("yellow-btn-active");
 });
